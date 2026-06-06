@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0d0f12;
+  --surface: #161a20;
+  --card: #1e2430;
+  --card2: #232b36;
+  --border: #2a3340;
+  --border2: #344050;
+  --green: #00d084;
+  --green2: #00a868;
+  --green-glow: rgba(0, 208, 132, 0.15);
+  --amber: #f5a623;
+  --blue: #4f8ef7;
+  --red: #ff5c5c;
+  --text: #e8edf5;
+  --muted: #6b7d8f;
+  --muted2: #8a9ab0;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+/* Input base */
+input, select, textarea {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--text);
+  outline: none;
+  font-family: 'DM Sans', sans-serif;
+  width: 100%;
+  transition: border-color 0.15s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px rgba(0, 208, 132, 0.1);
+}
+
+input[readonly] {
+  color: var(--green);
+  font-weight: 600;
+  font-family: 'DM Mono', monospace;
+}
+
+select option { background: #1e2430; }
+
+/* Table */
+.data-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+.data-table thead th {
+  background: rgba(0, 208, 132, 0.08);
+  color: var(--green);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(0, 208, 132, 0.2);
+  text-align: left;
+  white-space: nowrap;
+}
+.data-table thead th.r { text-align: right; }
+.data-table tbody td { padding: 9px 12px; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: middle; }
+.data-table tbody td.r { text-align: right; font-family: 'DM Mono', monospace; font-size: 12px; }
+.data-table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+.data-table tbody tr:last-child td { border-bottom: none; }
+.data-table tfoot td {
+  background: rgba(0, 208, 132, 0.06);
+  border-top: 1px solid rgba(0, 208, 132, 0.3);
+  color: var(--green);
+  font-weight: 700;
+  padding: 10px 12px;
+  font-family: 'DM Mono', monospace;
+}
+.data-table tfoot td.r { text-align: right; }
+
+/* Bank badge */
+.bank-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.bank-tdcc { background: rgba(0,208,132,0.12); color: var(--green); border: 1px solid rgba(0,208,132,0.2); }
+.bank-ubi  { background: rgba(245,166,35,0.12); color: var(--amber); border: 1px solid rgba(245,166,35,0.25); }
+.bank-cnr  { background: rgba(79,142,247,0.12); color: var(--blue); border: 1px solid rgba(79,142,247,0.25); }
+
+/* Animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.25s ease; }
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--card) 25%, var(--card2) 50%, var(--card) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
